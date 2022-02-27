@@ -14,7 +14,7 @@ import {
 const initialState = {
   initial: { minutes: 0, seconds: 0 },
   current: { minutes: 0, seconds: 0 },
-  final: { minutes: 1, seconds: 0 },
+  final: { minutes: 25, seconds: 0 },
   isRunning: false,
   progress: 0,
   session: 'focus',
