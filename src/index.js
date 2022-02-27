@@ -3,12 +3,12 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux'
 
 import { store } from 'redux/store';
-import { Routes } from 'routes';
+import { Router } from 'router';
 
 const App = () => (
   <React.StrictMode>
     <Provider store={store}>
-      <Routes />
+      <Router />
     </Provider>
   </React.StrictMode>
 );
