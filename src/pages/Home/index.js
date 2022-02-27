@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 
 import { useRunTimer } from 'hooks';
 import { Container } from 'components/atoms';
