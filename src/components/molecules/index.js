@@ -1,15 +1,6 @@
-import { Clock } from './Clock';
-import { ProgressBar } from './ProgressBar';
-import { SessionLabel } from './SessionLabel';
-import { ThemeChooser } from './ThemeChooser';
-import { TimerButton } from './TimerButton';
-import { Toggler } from './Toggler';
-
-export {
-  Clock,
-  ProgressBar,
-  SessionLabel,
-  ThemeChooser,
-  TimerButton,
-  Toggler,
-};
+export { Clock } from './Clock';
+export { ProgressBar } from './ProgressBar';
+export { SessionLabel } from './SessionLabel';
+export { ThemeChooser } from './ThemeChooser';
+export { TimerButton } from './TimerButton';
+export { Toggler } from './Toggler';

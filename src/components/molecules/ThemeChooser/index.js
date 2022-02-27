@@ -1,5 +1,5 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import ClickAwayListener from '@material-ui/core/ClickAwayListener';
 import Grow from '@material-ui/core/Grow';
 import Paper from '@material-ui/core/Paper';
@@ -9,28 +9,15 @@ import MenuList from '@material-ui/core/MenuList';
 
 import { Box, Button } from './styles';
 import { Icon } from 'components/atoms';
-import { theme } from 'redux/actions';
+import { useTheme } from 'hooks';
 
 export const ThemeChooser = () => {
-  const dispatch = useDispatch();
+  const { setDefault , setDracula, setNord } = useTheme();
   const { visibility } = useSelector(store => store);
   const [open, setOpen] = React.useState(false);
   const anchorRef = React.useRef(null);
   
-  const handleDefault = (event) => {
-    handleClose(event);
-    return dispatch(theme.setDefault());
-  };
 
-  const handleDracula = (event) => {
-    handleClose(event);
-    return dispatch(theme.setDracula());
-  };
-
-  const handleNord = (event) => {
-    handleClose(event);
-    return dispatch(theme.setNord());
-  };
 
   const handleToggle = () => {
     setOpen((prevOpen) => !prevOpen);
@@ -77,9 +64,9 @@ export const ThemeChooser = () => {
             <Paper>
               <ClickAwayListener onClickAway={handleClose}>
                 <MenuList autoFocusItem={open} id="menu-list-grow" onKeyDown={handleListKeyDown}>
-                <MenuItem onClick={handleDefault}>Default</MenuItem>
-                <MenuItem onClick={handleDracula}>Dracula</MenuItem>
-                <MenuItem onClick={handleNord}>Nord</MenuItem>
+                <MenuItem onClick={setDefault}>Default</MenuItem>
+                <MenuItem onClick={setDracula}>Dracula</MenuItem>
+                <MenuItem onClick={setNord}>Nord</MenuItem>
                 </MenuList>
               </ClickAwayListener>
             </Paper>

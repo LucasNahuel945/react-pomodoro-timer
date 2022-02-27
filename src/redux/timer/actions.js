@@ -3,8 +3,11 @@ import {
   TIMER_RESET,
   TIMER_PAUSE,
   TIMER_STOP,
-  TIMER_SET_INITIAL_TIME,
   TIMER_SET_FINAL_TIME,
+  TIMER_SET_FOCUS,
+  TIMER_SET_INITIAL_TIME,
+  TIMER_SET_SHORT_BREAK,
+  TIMER_SET_LONG_BREAK,
   TIMER_UPDATE_TIME,
 } from './constants';
 
@@ -30,6 +33,18 @@ export const updateTime = ({ minutes, seconds }) => ({
     minutes,
     seconds,
   },
+});
+
+export const setFocus = () => ({
+  type: TIMER_SET_FOCUS,
+});
+
+export const setShortBreak = () => ({
+  type: TIMER_SET_SHORT_BREAK,
+});
+
+export const setLongBreak = () => ({
+  type: TIMER_SET_LONG_BREAK,
 });
 
 export const resetTimer = () => ({

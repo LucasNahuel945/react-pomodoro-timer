@@ -1,11 +1,6 @@
-import { useFormatTime } from './useFormatTime';
-import { useRunTimer } from './useRunTimer';
-import { useSetTitle } from './useSetTitle';
-import { useTheme } from './useTheme';
-
-export {
-  useFormatTime,
-  useRunTimer,
-  useSetTitle,
-  useTheme,
-};
+export { useFormatTime } from './useFormatTime';
+export { useRunTimer } from './useRunTimer';
+export { useSetTitle } from './useSetTitle';
+export { useTheme } from './useTheme';
+export { useTimer } from './useTimer';
+export { useVisibility } from './useVisibility';

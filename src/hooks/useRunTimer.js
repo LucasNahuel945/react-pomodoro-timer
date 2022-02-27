@@ -1,13 +1,14 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-import { stopTimer, updateTime } from 'redux/timer/actions';
+import { setShortBreak, setFocus, updateTime } from 'redux/timer/actions';
 
 const useRunTimer = () => {
   const dispatch = useDispatch();
-  const { current, final, isRunning } = useSelector(store => store.timer);
-  
+  const { timer } = useSelector(store => store);
+
   return useEffect(() => {
+    const { current, final, isRunning } = timer;
     let { minutes, seconds } = current;
 
     const clock = setInterval(
@@ -18,9 +19,9 @@ const useRunTimer = () => {
           dispatch(updateTime({ minutes, seconds }))
         }
         if (current.minutes >= final.minutes) {
-          document.title = 'Finish';
-          clearInterval(clock);
-          dispatch(stopTimer())
+          (timer.session === 'focus')
+            ? dispatch(setShortBreak())
+            : dispatch(setFocus());
         }
       },
       1000,
@@ -29,7 +30,7 @@ const useRunTimer = () => {
     return () => {
       clearInterval(clock)
     };
-  }, [ current, final, isRunning ]);
+  }, [ timer ]);
 };
 
 export { useRunTimer };

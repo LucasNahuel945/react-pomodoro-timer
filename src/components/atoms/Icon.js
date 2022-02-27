@@ -14,8 +14,8 @@ import Sun from '@material-ui/icons/Brightness7TwoTone';
 import VisibilityOff from '@material-ui/icons/VisibilityOffTwoTone';
 import VisibilityOn from '@material-ui/icons/VisibilityTwoTone';
 
-import draculaSrc from 'assets/icons/dracula.png';
-import nordSrc from 'assets/icons/nord.png';
+//import draculaSrc from 'assets/icons/dracula.png';
+//import nordSrc from 'assets/icons/nord.png';
 
 const Icon = ({ set }) => {
   return (
@@ -31,8 +31,8 @@ const Icon = ({ set }) => {
     ((set === 'up') && <Up />) ||
     ((set === 'visibility-on') && <VisibilityOn />) ||
     ((set === 'visibility-off') && <VisibilityOff />) ||
-    ((set === 'dracula') && <img src={draculaSrc} alt='dracula'/>)||
-    ((set === 'nord') && <img src={nordSrc} alt='nord'/>)||
+//    ((set === 'dracula') && <img src={draculaSrc} alt='dracula'/>)||
+//    ((set === 'nord') && <img src={nordSrc} alt='nord'/>)||
     <></>
   );
 };

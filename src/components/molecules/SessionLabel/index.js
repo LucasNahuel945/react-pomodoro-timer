@@ -7,7 +7,7 @@ import {
   SessionName,
 } from './styles';
 
-const SessionLabel = ({ name, active }) => (
+export const SessionLabel = ({ name, active }) => (
   (active)
     ? <ActiveItem shadows> 
         <SessionName> {name} </SessionName>
@@ -19,4 +19,3 @@ const SessionLabel = ({ name, active }) => (
 
 SessionLabel.propTypes = proptypes;
 
-export { SessionLabel };

@@ -4,13 +4,13 @@ import { useSelector } from 'react-redux';
 
 import { Flexbox } from 'components/atoms';
 
-const Box = styled(Flexbox)`
+export const Box = styled(Flexbox)`
   align-items: center !important;
   justify-content: center !important;
   margin: 0 auto;
 `;
 
-const Progress = styled(CircularProgress).attrs(
+export const Progress = styled(CircularProgress).attrs(
   (props) => ({
     palette: useSelector(state => state.theme.palette) || props.palette,
     size: props.size || '256px',
@@ -22,7 +22,7 @@ const Progress = styled(CircularProgress).attrs(
   width: ${({ size }) => size} !important;
 `;
 
-const ProgressBg = styled(CircularProgress).attrs(
+export const ProgressBg = styled(CircularProgress).attrs(
   props => ({
     palette: useSelector(state => state.theme.palette) || props.palette,
     size: props.size || '248px',
@@ -35,9 +35,3 @@ const ProgressBg = styled(CircularProgress).attrs(
   position: absolute !important;
   width: ${({ size }) => size} !important;
 `;
-
-export {
-  Box,
-  Progress,
-  ProgressBg,
-};

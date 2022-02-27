@@ -1,11 +1,4 @@
-import { ButtonsContainer } from './ButtonsContainer';
-import { SessionIndicator } from './SessionIndicator';
-import { Timer } from './Timer';
-import { TogglersContainer } from './TogglersContainer';
-
-export {
-  ButtonsContainer,
-  SessionIndicator,
-  Timer,
-  TogglersContainer,
-};
+export { ButtonsContainer } from './ButtonsContainer';
+export { SessionIndicator } from './SessionIndicator';
+export { Timer } from './Timer';
+export { TogglersContainer } from './TogglersContainer';

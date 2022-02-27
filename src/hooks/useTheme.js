@@ -1,29 +1,16 @@
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
-import { theme  as themeActions} from 'redux/actions';
+import { theme } from 'redux/actions';
 
 export const useTheme = () => {
   const dispatch = useDispatch();
+  const state = useSelector(store => store.theme);
 
-  const setDefault = (event) => {
-    event.preventDefault();
-    return dispatch(themeActions.setDefault());
-  };
-
-  const setDracula = (event) => {
-    event.preventDefault();
-    return dispatch(themeActions.setDracula());
-  };
-
-  const setNord = (event) => {
-    event.preventDefault();
-    return dispatch(themeActions.setNord());
-  };
-
-  
   return ({
-    setDefault,
-    setDracula,
-    setNord,
+    state,
+    toggleMode: () => { dispatch(theme.toggleMode()) },
+    setDefault: () => { dispatch(theme.setDefault()) },
+    setDracula: () => { dispatch(theme.setDracula()) },
+    setNord: () => { dispatch(theme.setNord()) },
   })
 };

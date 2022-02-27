@@ -5,7 +5,7 @@ import { Icon } from 'components/atoms'
 import { proptypes } from './proptypes';
 import { Button } from './styles';
 
-const TimerButton = ({ action, icon }) => {
+const TimerButton = ({ action, icon, ...props }) => {
   const dispatch = useDispatch();
   const handleAction = (event) => {
     event.preventDefault();
@@ -13,7 +13,7 @@ const TimerButton = ({ action, icon }) => {
   };
 
   return (
-    <Button onClick={handleAction}>
+    <Button onClick={handleAction} {...props}>
       <Icon set={icon} />
     </Button>
   );

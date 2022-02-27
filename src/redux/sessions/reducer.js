@@ -11,7 +11,7 @@ const initialState = {
   focus,
   longBreak,
   shortBreak,
-  current: focus,
+  current: shortBreak,
   counter: {
     focus: 0,
     longBreak: 0,
@@ -19,7 +19,7 @@ const initialState = {
   },
 };
 
-const reducer = (state = initialState, action) => {
+export const reducer = (state = initialState, action) => {
   switch (action.type) {
     case SESSIONS_SET_FOCUS: return ({
       ...state,
@@ -51,5 +51,3 @@ const reducer = (state = initialState, action) => {
     default: return state;
   }
 };
-
-export { reducer };

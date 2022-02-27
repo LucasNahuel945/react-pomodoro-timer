@@ -6,14 +6,18 @@ import {
   TIMER_SET_INITIAL_TIME,
   TIMER_SET_FINAL_TIME,
   TIMER_UPDATE_TIME,
+  TIMER_SET_FOCUS,
+  TIMER_SET_SHORT_BREAK,
+  TIMER_SET_LONG_BREAK,
 } from './constants';
 
 const initialState = {
   initial: { minutes: 0, seconds: 0 },
   current: { minutes: 0, seconds: 0 },
-  final: { minutes: 25, seconds: 0 },
+  final: { minutes: 1, seconds: 0 },
   isRunning: false,
   progress: 0,
+  session: 'focus',
 };
 
 export const reducer = (
@@ -61,6 +65,26 @@ export const reducer = (
       progress: getProgress(action.newTime, state.final),
     });
     
+    case TIMER_SET_FOCUS: return ({
+      ...initialState,
+      isRunning: true,
+      session: 'focus',
+    });
+
+    case TIMER_SET_SHORT_BREAK: return ({
+      ...initialState,
+      isRunning: true,
+      session: 'shortBreak',
+      final: { minutes: 5, seconds: 0},
+    });
+    
+    case TIMER_SET_LONG_BREAK: return ({
+      ...initialState,
+      isRunning: true,
+      session: 'longBreak',
+      final: { minutes: 20, seconds: 0},
+    });
+
     default: return state;
   }
 };

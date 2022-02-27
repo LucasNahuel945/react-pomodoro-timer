@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
+import { useRunTimer } from 'hooks';
 import { Container } from 'components/atoms';
 import {
   SessionIndicator,
@@ -8,7 +9,9 @@ import {
   TogglersContainer,
 } from 'components/organisms';
 
-const Home = () => {
+export const Home = () => {
+  useRunTimer();
+
   return (
     <Container>
       <SessionIndicator />
@@ -19,4 +22,3 @@ const Home = () => {
   );
 };
 
-export { Home };

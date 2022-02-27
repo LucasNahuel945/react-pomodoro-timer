@@ -11,7 +11,7 @@ const ActiveItem = styled(RoundedBox).attrs(
   background-color: ${props => props.palette.primary};
   color: white;
   font-weight: 600;
-  padding: 8px
+  padding: 8px 16px;
 `;
 
 const InactiveItem = styled(RoundedBox)`

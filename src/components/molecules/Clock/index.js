@@ -1,7 +1,6 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
 
-import { useFormatTime } from 'hooks';
+import { useFormatTime, useTimer } from 'hooks';
 import {
   Box,
   Minutes,
@@ -9,12 +8,13 @@ import {
 } from './styles';
 
 const Clock = () => {
-  const { minutes, seconds } = useSelector(state => state.timer.current);
+  const { state } = useTimer();
+  //const { minutes, seconds } = useSelector(state => state.current);
 
   return (
     <Box>
-      <Minutes> {useFormatTime(minutes)} </Minutes>
-      <Seconds> {useFormatTime(seconds)} </Seconds>
+      <Minutes> {useFormatTime(state.current.minutes)} </Minutes>
+      <Seconds> {useFormatTime(state.current.seconds)} </Seconds>
     </Box>
   );
 };
