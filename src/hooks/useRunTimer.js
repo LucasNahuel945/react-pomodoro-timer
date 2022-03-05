@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import { setShortBreak, setFocus, updateTime } from 'redux/timer/actions';
 import { useFormatTime } from './useFormatTime';
+import alertSrc from 'assets/alert.mp3';
 
 const useRunTimer = () => {
   const dispatch = useDispatch();
@@ -23,6 +24,7 @@ const useRunTimer = () => {
             ${timer.session.charAt(0).toUpperCase() + timer.session.slice(1)}`;
         }
         if (current.minutes >= final.minutes) {
+          new Audio(alertSrc).play();
           (timer.session === 'focus')
             ? dispatch(setShortBreak())
             : dispatch(setFocus());
