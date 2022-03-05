@@ -1,30 +1,30 @@
 import styled from 'styled-components';
-import { useSelector } from 'react-redux';
 
+import { useTheme } from 'hooks';
 import {
   Text,
   Flexbox,
 } from 'components/atoms';
 
-const Box = styled(Flexbox)`
+export const Box = styled(Flexbox)`
   box-shadow: none;
   justify-content: center;
   font-family: 'Spartan', sans-serif;
   position: absolute;
 `;
 
-const Minutes = styled(Text).attrs(
+export const Minutes = styled(Text).attrs(
   props => ({
-    palette: useSelector(state => state.theme.palette) || props.palette,
+    palette: useTheme().state.palette || props.palette,
   })
 )`
   color: ${props => props.palette.foreground};
   font-size: 5rem;
 `;
 
-const Seconds = styled(Minutes).attrs(
+export const Seconds = styled(Minutes).attrs(
   props => ({
-    palette: useSelector(state => state.theme.palette) || props.palette,
+    palette: useTheme().state.palette || props.palette,
   })
 )`
   color: ${props => props.palette.foreground};
@@ -33,10 +33,3 @@ const Seconds = styled(Minutes).attrs(
   margin: 0 0 4px 4px;
   opacity: 50%;
 `;
-
-export {
-  Box,
-  Minutes,
-  Seconds,
-};
-

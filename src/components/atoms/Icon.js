@@ -17,7 +17,7 @@ import VisibilityOn from '@material-ui/icons/VisibilityTwoTone';
 //import draculaSrc from 'assets/icons/dracula.png';
 //import nordSrc from 'assets/icons/nord.png';
 
-const Icon = ({ set }) => {
+export const Icon = ({ set }) => {
   return (
     ((set === 'down') && <Down />) ||
     ((set === 'menu') && <Menu />) ||
@@ -38,5 +38,3 @@ const Icon = ({ set }) => {
 };
 
 Icon.propTypes = { set: PropTypes.string };
-
-export { Icon };

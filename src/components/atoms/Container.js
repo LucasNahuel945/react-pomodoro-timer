@@ -1,11 +1,11 @@
 import styled from 'styled-components';
-import { useSelector } from 'react-redux';
 
+import { useTheme } from 'hooks';
 import { Flexbox } from './Flexbox';
 
 export const Container = styled(Flexbox).attrs(
   props => ({
-    palette: useSelector(state => state.theme.palette) || props.palette,
+    palette: useTheme().state.palette || props.palette,
   })
 )`
   align-items: center;

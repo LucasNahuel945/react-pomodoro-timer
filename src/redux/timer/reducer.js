@@ -74,14 +74,14 @@ export const reducer = (
     case TIMER_SET_SHORT_BREAK: return ({
       ...initialState,
       isRunning: true,
-      session: 'shortBreak',
+      session: 'short break',
       final: { minutes: 5, seconds: 0},
     });
     
     case TIMER_SET_LONG_BREAK: return ({
       ...initialState,
       isRunning: true,
-      session: 'longBreak',
+      session: 'long break',
       final: { minutes: 20, seconds: 0},
     });
 

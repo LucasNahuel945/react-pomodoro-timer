@@ -2,7 +2,7 @@ import React from 'react';
 import { Clock, ProgressBar } from 'components/molecules';
 import { Box } from './styles';
 
-const Timer = () => {
+export const Timer = () => {
   return (
     <Box shadows>
       <ProgressBar />
@@ -10,5 +10,3 @@ const Timer = () => {
     </Box>
   );
 };
-
-export { Timer };

@@ -1,5 +1,4 @@
 import React from 'react';
-
 import { proptypes } from './proptypes';
 import {
   ActiveItem,
@@ -18,4 +17,3 @@ export const SessionLabel = ({ name, active }) => (
 );
 
 SessionLabel.propTypes = proptypes;
-

@@ -1,11 +1,10 @@
 import styled from 'styled-components';
-import { useSelector } from 'react-redux';
-
+import { useTheme } from 'hooks';
 import { RoundedBox, Text } from 'components/atoms';
 
-const ActiveItem = styled(RoundedBox).attrs(
+export const ActiveItem = styled(RoundedBox).attrs(
   props => ({
-    palette: props.palette || useSelector(store => store.theme.palette),
+    palette: useTheme().state.palette || props.palette,
   })
 )`
   background-color: ${props => props.palette.primary};
@@ -14,17 +13,11 @@ const ActiveItem = styled(RoundedBox).attrs(
   padding: 8px 16px;
 `;
 
-const InactiveItem = styled(RoundedBox)`
+export const InactiveItem = styled(RoundedBox)`
   box-shadow: none;
   padding: 8px;
 `;
 
-const SessionName = styled(Text)`
+export const SessionName = styled(Text)`
   text-transform: uppercase;
 `;
-
-export {
-  ActiveItem,
-  InactiveItem,
-  SessionName,
-};
