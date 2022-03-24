@@ -1,5 +1,8 @@
 import React from 'react';
-import { useFormatTime, useTimer } from 'hooks';
+import { useSelector } from 'react-redux';
+import { useFormatTime } from 'hooks/useFormatTime';
+import { getCurrentTime } from 'store/selectors';
+
 import {
   Box,
   Minutes,
@@ -7,7 +10,7 @@ import {
 } from './styles';
 
 export const Clock = () => {
-  const { minutes, seconds } = useTimer().state.current;
+  const { minutes, seconds } = useSelector(getCurrentTime);
 
   return (
     <Box>

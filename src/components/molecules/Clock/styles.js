@@ -1,6 +1,7 @@
 import styled from 'styled-components';
+import { useSelector } from 'react-redux';
+import { getPalette } from 'store/selectors';
 
-import { useTheme } from 'hooks';
 import {
   Text,
   Flexbox,
@@ -14,18 +15,14 @@ export const Box = styled(Flexbox)`
 `;
 
 export const Minutes = styled(Text).attrs(
-  props => ({
-    palette: useTheme().state.palette || props.palette,
-  })
+  props => ({ palette: useSelector(getPalette) || props.palette })
 )`
   color: ${props => props.palette.foreground};
   font-size: 5rem;
 `;
 
 export const Seconds = styled(Minutes).attrs(
-  props => ({
-    palette: useTheme().state.palette || props.palette,
-  })
+  props => ({ palette: useSelector(getPalette) || props.palette })
 )`
   color: ${props => props.palette.foreground};
   align-self: flex-end;

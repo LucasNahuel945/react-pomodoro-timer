@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-
 import { Flexbox } from './Flexbox';
 
 export const RoundedBox = styled(Flexbox)`

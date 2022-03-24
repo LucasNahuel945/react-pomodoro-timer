@@ -1,11 +1,10 @@
+import styled from 'styled-components';
 import IconButton from '@material-ui/core/IconButton';
 import { useSelector } from 'react-redux';
-import styled from 'styled-components';
+import { getPalette } from 'store/selectors';
 
-const Button = styled(IconButton).attrs(
-  props => ({
-    palette: props.palette || useSelector(store => store.theme.palette),
-  })
+export const Button = styled(IconButton).attrs(
+  props => ({ palette: useSelector(getPalette) || props.palette })
 )`
   color: ${props => props.palette.disabled } !important;
   &:hover{
@@ -13,5 +12,3 @@ const Button = styled(IconButton).attrs(
     background-color: ${props => props.palette.primary } !important;
   }
 `;
-
-export { Button };

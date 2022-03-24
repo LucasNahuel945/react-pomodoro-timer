@@ -1,9 +1,4 @@
-const THEME_TOGGLE_MODE = 'THEME_TOGGLE_MODE';
-const THEME_SET_DEFAULT = 'THEME_SET_DEFAULT';
-const THEME_SET_DRACULA = 'THEME_SET_DRACULA';
-const THEME_SET_NORD = 'THEME_SET_NORD';
-
-const defaultTheme = {
+export const defaultTheme = {
   dark: {
     background: '#acacac22',
     body: '#303a52',
@@ -20,7 +15,7 @@ const defaultTheme = {
   },
 };
 
-const dracula = { 
+export const dracula = { 
   dark: {
     background: '#44475a',
     body: '#282a36',
@@ -37,7 +32,7 @@ const dracula = {
   },
 };
 
-const nord = {
+export const nord = {
   dark: {
     background: '#4C566A',
     body: '#3B4252',
@@ -52,18 +47,4 @@ const nord = {
     foreground: '#4C566A',
     primary: '#81A1C1',
   },
-};
-
-const themes = {
-  defaultTheme,
-  dracula,
-  nord,
-};
-
-export {
-  themes,
-  THEME_TOGGLE_MODE,
-  THEME_SET_DEFAULT,
-  THEME_SET_DRACULA,
-  THEME_SET_NORD,
 };

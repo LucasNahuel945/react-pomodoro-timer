@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import CircularProgress from '@material-ui/core/CircularProgress';
-import { useTheme } from 'hooks';
+import { useSelector } from 'react-redux';
+import { getPalette } from 'store/selectors';
 import { Flexbox } from 'components/atoms';
 
 export const Box = styled(Flexbox)`
@@ -11,7 +12,7 @@ export const Box = styled(Flexbox)`
 
 export const Progress = styled(CircularProgress).attrs(
   (props) => ({
-    palette: useTheme().state.palette || props.palette,
+    palette: useSelector(getPalette) || props.palette,
     size: props.size || '256px',
   })
 )`
@@ -23,7 +24,7 @@ export const Progress = styled(CircularProgress).attrs(
 
 export const ProgressBg = styled(CircularProgress).attrs(
   props => ({
-    palette: useTheme().state.palette || props.palette,
+    palette: useSelector(getPalette) || props.palette,
     size: props.size || '248px',
   })
 )`

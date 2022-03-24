@@ -1,5 +1,5 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import ClickAwayListener from '@material-ui/core/ClickAwayListener';
 import Grow from '@material-ui/core/Grow';
 import Paper from '@material-ui/core/Paper';
@@ -9,11 +9,12 @@ import MenuList from '@material-ui/core/MenuList';
 
 import { Box, Button } from './styles';
 import { Icon } from 'components/atoms';
-import { useTheme } from 'hooks';
+import { setDefault , setDracula, setNord } from 'store/theme';
+import { getVisibility } from 'store/selectors';
 
 export const ThemeChooser = () => {
-  const { setDefault , setDracula, setNord } = useTheme();
-  const { visibility } = useSelector(store => store);
+  const dispatch = useDispatch();
+  const visibility = useSelector(getVisibility);
   const [open, setOpen] = React.useState(false);
   const anchorRef = React.useRef(null);
   
@@ -44,7 +45,7 @@ export const ThemeChooser = () => {
     prevOpen.current = open;
   }, [open]);
 
-  return visibility && ( 
+  return visibility.value && ( 
     <Box shadows>
       <Button
         ref={anchorRef}
@@ -64,9 +65,9 @@ export const ThemeChooser = () => {
             <Paper>
               <ClickAwayListener onClickAway={handleClose}>
                 <MenuList autoFocusItem={open} id="menu-list-grow" onKeyDown={handleListKeyDown}>
-                <MenuItem onClick={setDefault}>Default</MenuItem>
-                <MenuItem onClick={setDracula}>Dracula</MenuItem>
-                <MenuItem onClick={setNord}>Nord</MenuItem>
+                <MenuItem onClick={() => { dispatch(setDefault()) }}>Default</MenuItem>
+                <MenuItem onClick={() => { dispatch(setDracula()) }}>Dracula</MenuItem>
+                <MenuItem onClick={() => { dispatch(setNord()) }}>Nord</MenuItem>
                 </MenuList>
               </ClickAwayListener>
             </Paper>
