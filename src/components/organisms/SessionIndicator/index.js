@@ -1,15 +1,16 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
+import { getVisibility, getSession } from 'store/selectors';
 
-import { Box } from './styles';
 import { SessionLabel } from 'components/molecules';
-import { useVisibility, useTimer } from 'hooks';
+import { Box } from './styles';
 
 export const SessionIndicator = () => {
-  const { session } = useTimer().state;
-  const visibility = useVisibility().state;
+  const session = useSelector(getSession);
+  const visibility = useSelector(getVisibility)
 
   return (
-    visibility &&
+    visibility.value &&
     <Box shadows>
       <SessionLabel name='Focus' active={session === 'focus'} />
       <SessionLabel name='Break' active={session === 'short break'} />

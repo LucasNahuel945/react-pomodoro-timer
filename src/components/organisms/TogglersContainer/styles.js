@@ -1,11 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
-
-//import * as actions from 'redux/actions';
-
-import { useTheme, useVisibility } from 'hooks';
+import { useSelector, useDispatch } from 'react-redux';
+import { getIsDarkMode, getVisibility } from 'store/selectors';
 import { Icon, RoundedBox } from 'components/atoms';
 import { Toggler } from 'components/molecules';
+import { toggleVisibility } from 'store/visibility';
+import { toggleMode } from 'store/theme';
 
 export const Box = styled(RoundedBox)`
   align-items: center;
@@ -16,26 +16,28 @@ export const Box = styled(RoundedBox)`
 `;
 
 export const ToggleMode = () => {
-  const theme = useTheme();
-  const visibility = useVisibility();
+  const dispatch = useDispatch();
+  const darkMode = useSelector(getIsDarkMode);
+  const visibility = useSelector(getVisibility);
 
   return (
-    visibility.state &&
+    visibility.value &&
     <Toggler
-      onClick={() => { theme.toggleMode() }}
-      fg={(theme.state.darkMode) ? '#ffff00ee' : '#220055ee'}
+      onClick={() => { dispatch(toggleMode()) }}
+      fg={(darkMode) ? '#ffff00ee' : '#220055ee'}
     >
-      <Icon set={(theme.state.darkMode) ? 'sun' : 'moon'}/>
+      <Icon set={(darkMode) ? 'sun' : 'moon'}/>
     </Toggler>
   );
 };
 
 export const ToggleVisibility = () => {
-  const visibility = useVisibility();
+  const dispatch = useDispatch();
+  const visibility = useSelector(getVisibility);
 
   return (
-    <Toggler onClick={() => { visibility.toggle() }}>
-      <Icon set={(visibility.state) ? 'visibility-on' : 'visibility-off'} />
+    <Toggler onClick={() => { dispatch(toggleVisibility()) }}>
+      <Icon set={(visibility.value) ? 'visibility-on' : 'visibility-off'} />
     </Toggler>
   );
 };

@@ -1,12 +1,10 @@
 import styled from 'styled-components';
-
-import { useTheme } from 'hooks';
+import { useSelector } from 'react-redux';
+import { getPalette } from 'store/selectors';
 import { RoundedBox } from 'components/atoms';
 
 export const Box = styled(RoundedBox).attrs(
-  props => ({
-    palette:  useTheme().state.palette || props.palette,
-  })
+  props => ({ palette:  useSelector(getPalette) || props.palette })
 )`
  background: ${props => props.palette.background};
  height: 64px;

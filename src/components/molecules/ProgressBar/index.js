@@ -1,5 +1,7 @@
 import React from 'react';
-import { useTimer } from 'hooks';
+import { useSelector } from 'react-redux';
+import { getProgress } from 'store/selectors';
+
 import {
   Box,
   ProgressBg,
@@ -7,7 +9,7 @@ import {
 } from './styles';
 
 export const ProgressBar = () => {
-  const { progress } = useTimer().state;
+  const progress = useSelector(getProgress);
 
   return (
     <Box>

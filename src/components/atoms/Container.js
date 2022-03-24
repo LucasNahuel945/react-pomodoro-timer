@@ -1,12 +1,11 @@
 import styled from 'styled-components';
+import { useSelector } from 'react-redux';
+import { getPalette } from 'store/selectors';
 
-import { useTheme } from 'hooks';
 import { Flexbox } from './Flexbox';
 
 export const Container = styled(Flexbox).attrs(
-  props => ({
-    palette: useTheme().state.palette || props.palette,
-  })
+  props => ({ palette: useSelector(getPalette) || props.palette })
 )`
   align-items: center;
   background-color: ${({ palette }) => palette.body};

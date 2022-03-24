@@ -1,11 +1,10 @@
 import styled from 'styled-components';
-import { useTheme } from 'hooks';
+import { useSelector } from 'react-redux';
+import { getPalette } from 'store/selectors';
 import { RoundedBox, Text } from 'components/atoms';
 
 export const ActiveItem = styled(RoundedBox).attrs(
-  props => ({
-    palette: useTheme().state.palette || props.palette,
-  })
+  props => ({ palette: useSelector(getPalette) || props.palette })
 )`
   background-color: ${props => props.palette.primary};
   color: white;
