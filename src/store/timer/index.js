@@ -39,6 +39,8 @@ export const timerSlice = createSlice({
     setFocus(state) {
       state.isRunning = true;
       state.session = 'focus';
+      state.current = {minutes: 0, seconds: 0};
+      state.final = { minutes: 25, seconds: 0 };
     },
     setFinalTime(state, { payload }) {
       state.current = {
@@ -56,11 +58,13 @@ export const timerSlice = createSlice({
     setShortBreak(state) {
       state.isRunning = true;
       state.session = 'short break';
+      state.current = {minutes: 0, seconds: 0};
       state.final = { minutes: 5, seconds: 0 };
     },
     setLongBreak(state) {
       state.isRunning = true;
       state.session = 'long break';
+      state.current = {minutes: 0, seconds: 0};
       state.final = { minutes: 20, seconds: 0 };
     },
     updateTime(state, { payload }) {
