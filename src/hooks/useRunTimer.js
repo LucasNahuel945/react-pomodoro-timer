@@ -1,13 +1,12 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { getTimer } from 'store/selectors'; 
-
 import { setShortBreak, setFocus, updateTime } from 'store/timer';
 
-import { useFormatTime } from './useFormatTime';
+import { formatTime } from 'utilities';
 import alertSrc from 'assets/alert.mp3';
 
-const useRunTimer = () => {
+export const useRunTimer = () => {
   const dispatch = useDispatch();
   const timer = useSelector(getTimer);
 
@@ -22,7 +21,7 @@ const useRunTimer = () => {
           minutes = (seconds === 0) ? ++minutes : minutes;
           dispatch(updateTime({ minutes, seconds }))
           document.title = `
-            ${useFormatTime(minutes)}:${useFormatTime(seconds)} | 
+            ${formatTime(minutes)}:${formatTime(seconds)} | 
             ${timer.session.charAt(0).toUpperCase() + timer.session.slice(1)}`;
         }
         if (current.minutes >= final.minutes) {
@@ -40,5 +39,3 @@ const useRunTimer = () => {
     };
   }, [ timer ]);
 };
-
-export { useRunTimer };

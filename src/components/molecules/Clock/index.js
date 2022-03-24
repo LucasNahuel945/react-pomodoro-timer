@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { useFormatTime } from 'hooks/useFormatTime';
+import { formatTime } from 'utilities';
 import { getCurrentTime } from 'store/selectors';
 
 import {
@@ -14,8 +14,8 @@ export const Clock = () => {
 
   return (
     <Box>
-      <Minutes> {useFormatTime(minutes)} </Minutes>
-      <Seconds> {useFormatTime(seconds)} </Seconds>
+      <Minutes> {formatTime(minutes)} </Minutes>
+      <Seconds> {formatTime(seconds)} </Seconds>
     </Box>
   );
 };
