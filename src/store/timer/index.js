@@ -16,6 +16,7 @@ export const timerSlice = createSlice({
     initial: { minutes: 0, seconds: 0 },
     current: { minutes: 0, seconds: 0 },
     final: { minutes: 25, seconds: 0 },
+    totalFocused: { minutes: 0, seconds: 0 },
     isRunning: false,
     progress: 0,
     session: 'focus',
@@ -32,6 +33,13 @@ export const timerSlice = createSlice({
       state.progress = 0;
     },
     stopTimer(state) {
+      state.totalFocused.minutes += state.current.minutes;
+      if((state.totalFocused.seconds + state.current.seconds) > 59) {
+        state.totalFocused.minutes += 1;
+        state.totalFocused.seconds += state.current.seconds - 60;
+      } else {
+        state.totalFocused.seconds += state.current.seconds;
+      }
       state.current = state.initial;
       state.isRunning = false;
       state.progress = 0;
@@ -58,12 +66,26 @@ export const timerSlice = createSlice({
     setShortBreak(state) {
       state.isRunning = true;
       state.session = 'short break';
+      state.totalFocused.minutes += state.current.minutes;
+      if((state.totalFocused.seconds + state.current.seconds) > 59) {
+        state.totalFocused.minutes += 1;
+        state.totalFocused.seconds += state.current.seconds - 60;
+      } else {
+        state.totalFocused.seconds += state.current.seconds;
+      }
       state.current = {minutes: 0, seconds: 0};
       state.final = { minutes: 5, seconds: 0 };
     },
     setLongBreak(state) {
       state.isRunning = true;
       state.session = 'long break';
+      state.totalFocused.minutes += state.current.minutes;
+      if((state.totalFocused.seconds + state.current.seconds) > 59) {
+        state.totalFocused.minutes += 1;
+        state.totalFocused.seconds += state.current.seconds - 60;
+      } else {
+        state.totalFocused.seconds += state.current.seconds;
+      }
       state.current = {minutes: 0, seconds: 0};
       state.final = { minutes: 20, seconds: 0 };
     },

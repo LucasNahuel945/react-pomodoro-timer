@@ -1,4 +1,5 @@
 export const getCurrentTime = (state) => state.timer.current;
+export const getTotalFocused = (state) => state.timer.totalFocused;
 export const getTimer = (state) => state.timer;
 export const getProgress = (state) => state.timer.progress;
 export const getSession = (state) => state.timer.session; 
