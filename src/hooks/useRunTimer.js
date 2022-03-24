@@ -10,6 +10,8 @@ export const useRunTimer = () => {
   const dispatch = useDispatch();
   const timer = useSelector(getTimer);
 
+  useEffect(()=> { Notification.requestPermission() }, [])
+
   return useEffect(() => {
     const { current, final, isRunning } = timer;
     let { minutes, seconds } = current;
@@ -26,9 +28,13 @@ export const useRunTimer = () => {
         }
         if (current.minutes >= final.minutes) {
           new Audio(alertSrc).play();
-          (timer.session === 'focus')
-            ? dispatch(setShortBreak())
-            : dispatch(setFocus());
+          if (timer.session === 'focus') {
+            dispatch(setShortBreak());
+            if(document.visibilityState === 'hidden') new Notification('Pomometro', { body: 'La sesión cambio a "Short Break"' });
+          } else {
+            dispatch(setFocus());
+            if(document.visibilityState === 'hidden') new Notification('Pomometro', { body: 'La sesión cambio a "Focus"' });
+          }
         }
       },
       1000,
