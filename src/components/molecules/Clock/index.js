@@ -1,5 +1,4 @@
 import React from 'react';
-
 import { useFormatTime, useTimer } from 'hooks';
 import {
   Box,
@@ -7,16 +6,13 @@ import {
   Seconds,
 } from './styles';
 
-const Clock = () => {
-  const { state } = useTimer();
-  //const { minutes, seconds } = useSelector(state => state.current);
+export const Clock = () => {
+  const { minutes, seconds } = useTimer().state.current;
 
   return (
     <Box>
-      <Minutes> {useFormatTime(state.current.minutes)} </Minutes>
-      <Seconds> {useFormatTime(state.current.seconds)} </Seconds>
+      <Minutes> {useFormatTime(minutes)} </Minutes>
+      <Seconds> {useFormatTime(seconds)} </Seconds>
     </Box>
   );
 };
-
-export { Clock };
